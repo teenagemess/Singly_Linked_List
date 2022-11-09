@@ -109,5 +109,13 @@ namespace Singly_Linked_List
                 Console.WriteLine();
             }
         }
+        
+        public bool listEmpty()
+        {
+            if (START == null)
+                return true;
+            else
+                return false;
+        }
     }
 }
