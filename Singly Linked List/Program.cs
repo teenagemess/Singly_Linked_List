@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,9 +53,29 @@ namespace Singly_Linked_List
             {
                 if(nim == current.noMhs)
                 {
-                    Console
+                    Console.WriteLine("\nNomer mahasiswa sama tidak diijinkan\n");
+                    return;
                 }
+                previous = current;
+                current = current.next;
             }
+            /*Node baru akan ditempatkan diantara previus dan current*/
+
+            nodeBaru.next = current;
+            previous.next = nodeBaru;
+        }
+        /*Method untuk menghapus node tertentu didalam list*/
+        public bool delnode(int nim)
+        {
+            Node previous, current;
+            previous = current = null;
+            /*check apakah node yang dimaksud ada di dalam list atau tidak*/
+            if(Search(nim, ref previous, ref current) == false)
+                return false;
+            previous.next = current.next;
+            if (current == START)
+                START = START.next;
+            return true;
         }
     }
 }
